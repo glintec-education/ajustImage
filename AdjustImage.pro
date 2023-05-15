@@ -10,7 +10,13 @@ CONFIG -= app_bundle
 SOURCES += \
         main.cpp
 
+
 OPENCV_HOME = /usr/local/
-INCLUDEPATH += $${OPENCV_HOME}/include/opencv4/opencv2
-DEPENDPATH += $${OPENCV_HOME}/include/opencv4/opencv2
-LIBS += -L$${OPENCV_HOME}/lib -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_highgui -lopencv_videoio -lopencv_calib3d
+INCLUDEPATH += $${OPENCV_HOME}/include
+DEPENDPATH += $${OPENCV_HOME}/include
+LIBS += -L$${OPENCV_HOME}/lib -lopencv_world
+
+#OPENCV_HOME = /usr/local/
+#INCLUDEPATH += $${OPENCV_HOME}/include/opencv4/opencv2
+#DEPENDPATH += $${OPENCV_HOME}/include/opencv4/opencv2
+#LIBS += -L$${OPENCV_HOME}/lib -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_highgui -lopencv_videoio -lopencv_calib3d
