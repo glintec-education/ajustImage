@@ -1,3 +1,6 @@
+#include "interface.h"
+#include <QApplication>
+
 #include <QCoreApplication>
 #include <QtDebug>
 #include <QThread>
@@ -48,10 +51,15 @@ Mat rotacion(Mat &img, double grados)
     return rotated_img;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
 
-    int nimgs=461;
+     QApplication a(argc, argv);
+     Interface w;
+
+
+//    int nimgs=461;
+     int nimgs=4;
     int counterImages=1; //contador de imagenes
     stringstream oldImgs, newImgs, rotatedImgs;
 
@@ -94,6 +102,13 @@ int main()
             cout << i<< endl;
         }
 
+
+        //Define the % for the processing images
+        float porcentaje = (float)((i*100)/nimgs);
+        cout << "% --> " << porcentaje << endl;
+
+
+
         imshow("image", imgLeerMod);
         qDebug()<<"!Imagen !"<<i<<endl;
 
@@ -102,5 +117,11 @@ int main()
         //        QThread::msleep(200);
 
     }
-    return 0;
+//    return 0;
+
+
+    w.show();
+
+    return a.exec();
+
 }
