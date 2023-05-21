@@ -134,7 +134,16 @@ void Interface::on_pBtnStart_clicked()
         ui->progressBar->setValue(porcentaje);
 
 
-        imshow("image", imgLeerMod);
+//        QImage imLabel((uchar*)imgLeerMod.data, imgLeerMod.cols,
+//                    imgLeerMod.rows, QImage::Format_RGB888);
+
+        QImage imLabel = QImage((const unsigned char*)(imgLeerMod.data),imgLeerMod.cols,
+                                imgLeerMod.rows,QImage::Format_RGB888);
+
+        ui->lImagen->setPixmap(QPixmap::fromImage(imLabel));
+        ui->lImagen->resize(ui->lImagen->pixmap()->size());
+
+//        imshow("image", imgLeerMod);
         qDebug()<<"!Imagen !"<<i<<endl;
 
 

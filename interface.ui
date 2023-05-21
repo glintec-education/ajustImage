@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>675</width>
-    <height>403</height>
+    <height>417</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,10 +22,10 @@
   <widget class="QPushButton" name="pBtnStart">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>60</y>
-     <width>141</width>
-     <height>101</height>
+     <x>100</x>
+     <y>360</y>
+     <width>71</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
@@ -221,7 +221,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QCheckBox" name="chBoxRotations">
         <property name="text">
          <string>Rotations</string>
         </property>
@@ -376,6 +376,19 @@
      <widget class="QLineEdit" name="lEdTotalImgs"/>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="lImagen">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>40</y>
+     <width>391</width>
+     <height>341</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
   </widget>
  </widget>
  <resources/>
