@@ -35,7 +35,8 @@ Interface::Interface(QWidget *parent) :
     std::vector<std::string> v = {"png", "jpg", "jpeg", "bmp"};
 //    for (int i=0; i<vs.size(); i++)
 //    {
-        ui->listWidget->addItems(vs);
+        ui->lWidgetIn->addItems(vs);
+        ui->lWidgetOut->addItems(vs);
 
 //    }
 }
