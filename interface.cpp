@@ -82,7 +82,9 @@ void Interface::on_pBtnStart_clicked()
     stringstream oldImgs, newImgs, rotatedImgs;
 
     Mat imgLeer, imgLeerMod, imgEscribir;
-    namedWindow("image",WINDOW_AUTOSIZE);
+//    namedWindow("image",WINDOW_AUTOSIZE);
+
+
     //    string direccion = "/home/glintec/Documents/programs/QtQML/ajustImage/images/piezaPrint";
     //    string direccionMod = "/home/glintec/Documents/programs/QtQML/ajustImage/images/piezaPrint_";
     string direccion = "/home/glintec/Documents/programs/QtQML/ajustImage/images/pi_";
@@ -112,12 +114,17 @@ void Interface::on_pBtnStart_clicked()
         }
 
         //Decide to rotate image
-        if(false){
+        if(ui->chBoxRotations->checkState()){
             for(int i=0; i<=270; i+=10)
             {
                 counterImages++;
                 Mat imgRotada;
-                rotatedImgs << direccionGiro<< counterImages << ".png";
+                int idxOutputFormatImage = ui->lWidgetOut->currentRow();
+                /*QString formatOut=*/
+                cout << "Valor " << idxOutputFormatImage<<endl;
+//                qDebug() << "cadena " << ui->lWidgetOut->item(idxOutputFormatImage)->text();
+                string cadena  = ui->lWidgetOut->item(idxOutputFormatImage)->text().toStdString();
+                rotatedImgs << direccionGiro<< counterImages << "."<<cadena;
                 imgRotada=rotacion(imgLeerMod, (double)i);
                 //            resize(imgRotada, imgRotada, Size(imgRotada.cols * 0.7,imgRotada.rows * 0.7), 0, 0, CV_INTER_LINEAR);
                 imgEscribir=imwrite(rotatedImgs.str(), imgRotada);
@@ -140,7 +147,11 @@ void Interface::on_pBtnStart_clicked()
         QImage imLabel = QImage((const unsigned char*)(imgLeerMod.data),imgLeerMod.cols,
                                 imgLeerMod.rows,QImage::Format_RGB888);
 
-        ui->lImagen->setPixmap(QPixmap::fromImage(imLabel));
+        int w = ui->lImagen->width();
+        int h = ui->lImagen->height();
+
+
+        ui->lImagen->setPixmap(QPixmap::fromImage(imLabel).scaled(w,h,Qt::KeepAspectRatio));
         ui->lImagen->resize(ui->lImagen->pixmap()->size());
 
 //        imshow("image", imgLeerMod);
